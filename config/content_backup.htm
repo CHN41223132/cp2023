@@ -1,6 +1,7 @@
 <h1>About</h1>
 <p><a href="https://github.com/CHN41223132/cp2023.git(個人">https://github.com/CHN41223132/cp2023.git</a>(個人倉儲)</p>
 <p><a href="https://github.com/41223133/cp2023_ag3.git">https://github.com/41223133/cp2023_ag3.git</a>(群組倉儲)</p>
+<p></p>
 <h1>w13心得</h1>
 <p><span>這堂課我剛開始看到的時候我就不是很明白這堂課要學甚麼，第一堂課開始我努力地去消化老師所教的課程內容，但到後面我開始分心，進而導致跟不上老師所教學的內容，但我後來清醒了，利用假日去找汶哲，一步步向他學習上課教的內容，雖然說我沒有學到很徹底，但我目前學會了如何利用Replit和Github建立網站，在Replit上畫國旗，不會時利用GPT來解答。總而言之這堂課我學到了很多未知的知識。</span></p>
 <h1>homework</h1>
@@ -217,7 +218,35 @@ void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotatio
     gdImageFilledPolygon(img, points, 10, color);
 }</pre>
 <p><img alt="" height="240" src="/images/usa_flag.png" width="456"/></p>
-<p></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">    int cy = (int)(0.27 * height);
+
+    for (int i = -1; i &lt; 3; i++) {
+        int x = (int)(cx + radius * cos(i * angle + rotation));
+        int y = (int)(cy + radius * sin(i * angle + rotation));
+        draw_star(img, x, y, 19, yellow, M_PI / 5.0);
+    }
+}
+
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
+    gdPoint points[10];
+
+    // 計算星形的五個外點和五個内點
+    double outer_radius = size / 2;
+    double inner_radius = size / 6;
+    double angle = M_PI / 5.0;
+
+    for (int i = 0; i &lt; 10; i++) {
+        double radius = (i % 2 == 0) ? outer_radius : inner_radius;
+        double theta = rotation_angle + i * angle;
+        points[i].x = x + radius * cos(theta);
+        points[i].y = y + radius * sin(theta);
+    }
+
+    // 使用 gdImageFilledPolygon 繪製星形
+    gdImageFilledPolygon(img, points, 10, color);
+}</pre>
+<p><img alt="" height="416" src="/images/669.png" width="624"/></p>
+<p><br/><br/></p>
 <h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>

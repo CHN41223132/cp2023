@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,11 +142,36 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='w13心得.html'>Next</a> >> w13心得<br /><h1>About</h1>
-<p><a href="https://github.com/CHN41223132/cp2023.git(個人">https://github.com/CHN41223132/cp2023.git</a>(個人倉儲)</p>
-<p><a href="https://github.com/41223133/cp2023_ag3.git">https://github.com/41223133/cp2023_ag3.git</a>(群組倉儲)</p>
-<p></p>
-<br /> <a href='w13心得.html'>Next</a> >> w13心得</div>
+    <div id="tipue_search_content">美國 << <a href='美國.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>中國</h1>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">    int cy = (int)(0.27 * height);
+
+    for (int i = -1; i &lt; 3; i++) {
+        int x = (int)(cx + radius * cos(i * angle + rotation));
+        int y = (int)(cy + radius * sin(i * angle + rotation));
+        draw_star(img, x, y, 19, yellow, M_PI / 5.0);
+    }
+}
+
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
+    gdPoint points[10];
+
+    // 計算星形的五個外點和五個内點
+    double outer_radius = size / 2;
+    double inner_radius = size / 6;
+    double angle = M_PI / 5.0;
+
+    for (int i = 0; i &lt; 10; i++) {
+        double radius = (i % 2 == 0) ? outer_radius : inner_radius;
+        double theta = rotation_angle + i * angle;
+        points[i].x = x + radius * cos(theta);
+        points[i].y = y + radius * sin(theta);
+    }
+
+    // 使用 gdImageFilledPolygon 繪製星形
+    gdImageFilledPolygon(img, points, 10, color);
+}</pre>
+<p><img alt="" height="416" src="./../images/669.png" width="624"/></p>
+<p><br/><br/></p><br />美國 << <a href='美國.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
