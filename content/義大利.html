@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,11 +142,101 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='w13心得.html'>Next</a> >> w13心得<br /><h1>About</h1>
-<p><a href="https://github.com/CHN41223132/cp2023.git(個人">https://github.com/CHN41223132/cp2023.git</a>(個人倉儲)</p>
-<p><a href="https://github.com/41223133/cp2023_ag3.git">https://github.com/41223133/cp2023_ag3.git</a>(群組倉儲)</p>
+    <div id="tipue_search_content">英國 << <a href='英國.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>義大利</h1>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+ 
+int main() {
+    int width = 300;  // 宽度
+    int height = 200; // 高度
+ 
+    gdImagePtr image = gdImageCreateTrueColor(width, height);
+ 
+    if (image == NULL) {
+        printf("Failed to create image.\n");
+        return 1;
+    }
+ 
+    // 确定颜色索引
+    int green = gdImageColorAllocate(image, 0, 128, 0);
+    int white = gdImageColorAllocate(image, 255, 255, 255);
+    int red = gdImageColorAllocate(image, 255, 0, 0);
+ 
+    // 填充颜色
+    gdImageFilledRectangle(image, 0, 0, width / 3, height, green);
+    gdImageFilledRectangle(image, width / 3, 0, (width / 3) * 2, height, white);
+    gdImageFilledRectangle(image, (width / 3) * 2, 0, width, height, red);
+ 
+    FILE *outputFile;
+    outputFile = fopen("./../images/italian_flag.png", "wb");
+ 
+    if (outputFile == NULL) {
+        printf("Failed to open file for writing.\n");
+        return 1;
+    }
+ 
+    gdImagePng(image, outputFile);
+    fclose(outputFile);
+ 
+    gdImageDestroy(image);
+ 
+    return 0;
+}</pre>
+<p><img alt="" height="363" src="./../images/italian_flag.png" width="545"/></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+ 
+#define WIDTH 600
+#define HEIGHT 400
+#define RED 0xDC143C  // Crimson color
+#define YELLOW 0xFFFF00
+ 
+void drawStar(gdImagePtr im, int x, int y, int outerRadius, int innerRadius, int color) {
+    double angle = -M_PI / 2.0;  // Starting angle for the star
+ 
+    gdPoint starPoints[10];
+ 
+    for (int i = 0; i &lt; 10; i++) {
+        int radius = i % 2 == 0 ? outerRadius : innerRadius;
+        starPoints[i].x = x + radius * cos(angle);
+        starPoints[i].y = y + radius * sin(angle);
+        angle += M_PI / 5.0;  // Angle between two consecutive points
+    }
+ 
+    gdImageFilledPolygon(im, starPoints, 10, color);
+}
+ 
+void drawVietnamFlag() {
+    gdImagePtr im;
+    FILE *output;
+ 
+    im = gdImageCreateTrueColor(WIDTH, HEIGHT);
+    output = fopen("./../images/vietnam_flag.png", "wb");
+ 
+    // Draw red background
+    gdImageFilledRectangle(im, 0, 0, WIDTH - 1, HEIGHT - 1, RED);
+ 
+    // Draw yellow star in the center
+    int starSize = 60;
+    int starX = WIDTH / 2;
+    int starY = HEIGHT / 2;
+ 
+    drawStar(im, starX, starY, starSize, starSize / 2, YELLOW);
+ 
+    gdImagePng(im, output);
+    fclose(output);
+    gdImageDestroy(im);
+}
+ 
+int main() {
+    drawVietnamFlag();
+    return 0;
+}</pre>
+<p><img alt="" height="400" src="./../images/vietnam_flag.png" width="600"/></p>
+<p><br/><br/></p>
 <p></p>
-<br /> <a href='w13心得.html'>Next</a> >> w13心得</div>
+<br />英國 << <a href='英國.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
