@@ -626,8 +626,8 @@ void draw_france_flag(gdImagePtr img);
 
 int main() {
     // 法國國旗的寬度和高度
-    int width = 900;
-    int height = 600;
+    int width = 510;
+    int height = (int)(width * 2.0 / 3.0);
 
     // 創建 GD 圖片物件
     gdImagePtr img = gdImageCreateTrueColor(width, height);
@@ -659,20 +659,14 @@ void draw_france_flag(gdImagePtr img) {
     int white = gdImageColorAllocate(img, 255, 255, 255);
     int red = gdImageColorAllocate(img, 239, 65, 53);
 
-    // 分配法國國旗三個顏色
-    int colors[3] = {blue, white, red};
+    // 畫出三個垂直條紋
     int stripeWidth = width / 3;
-
-    // 畫出三個橫條
-    for (int i = 0; i &lt; 3; i++) {
-        int x1 = i * stripeWidth;
-        int x2 = (i + 1) * stripeWidth;
-
-        gdImageFilledRectangle(img, x1, 0, x2, height, colors[i]);
-    }
+    gdImageFilledRectangle(img, 0, 0, stripeWidth - 1, height - 1, blue);
+    gdImageFilledRectangle(img, stripeWidth, 0, 2 * stripeWidth - 1, height - 1, white);
+    gdImageFilledRectangle(img, 2 * stripeWidth, 0, width - 1, height - 1, red);
 }
 </pre>
-<p></p>
+<p><img alt="" height="340" src="/images/france_flag.png" width="510"/></p>
 <p><br/><br/></p>
 <p></p>
 <h1>Brython</h1>
