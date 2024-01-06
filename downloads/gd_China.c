@@ -2,23 +2,29 @@
 #include <gd.h>
 #include <math.h>
 
+// 聲明 draw_star 函數
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);
+
+// 聲明 draw_chinese_flag 函數
 void draw_chinese_flag(gdImagePtr img);
 
 int main() {
-    int width = 300; // 國旗寬度
-    int height = 200; // 國旗高度
+    int width = 510; // 國旗寬度
+    int height = (int)(width * 2.0 / 3.0); // 國旗高度
 
     gdImagePtr im = gdImageCreateTrueColor(width, height);
     gdImageAlphaBlending(im, 0);
 
+    // 呼叫繪圖函數
     draw_chinese_flag(im);
 
     FILE *outputFile = fopen("./../images/669.png", "wb");
     if (outputFile == NULL) {
-        fprintf(stderr, "打開输出文件時出錯。\n");
+        fprintf(stderr, "打開輸出文件時出錯。\n");
         return 1;
     }
 
+    // 將圖片寫入檔案
     gdImagePngEx(im, outputFile, 9);
     fclose(outputFile);
     gdImageDestroy(im);
@@ -26,8 +32,24 @@ int main() {
     return 0;
 }
 
-// 聲明 draw_star 函數
-void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
+    gdPoint points[10];
+
+    // 計算星形的五個外點和五個內點
+    double outer_radius = size / 2;
+    double inner_radius = size / 6;
+    double angle = M_PI / 5.0;
+
+    for (int i = 0; i < 10; i++) {
+        double radius = (i % 2 == 0) ? outer_radius : inner_radius;
+        double theta = rotation_angle + i * angle;
+        points[i].x = x + radius * cos(theta);
+        points[i].y = y + radius * sin(theta);
+    }
+
+    // 使用 gdImageFilledPolygon 繪製星形
+    gdImageFilledPolygon(img, points, 10, color);
+}
 
 void draw_chinese_flag(gdImagePtr img) {
     int width = gdImageSX(img);
@@ -61,23 +83,4 @@ void draw_chinese_flag(gdImagePtr img) {
         int y = (int)(cy + radius * sin(i * angle + rotation));
         draw_star(img, x, y, 19, yellow, M_PI / 5.0);
     }
-}
-
-void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
-    gdPoint points[10];
-
-    // 計算星形的五個外點和五個内點
-    double outer_radius = size / 2;
-    double inner_radius = size / 6;
-    double angle = M_PI / 5.0;
-
-    for (int i = 0; i < 10; i++) {
-        double radius = (i % 2 == 0) ? outer_radius : inner_radius;
-        double theta = rotation_angle + i * angle;
-        points[i].x = x + radius * cos(theta);
-        points[i].y = y + radius * sin(theta);
-    }
-
-    // 使用 gdImageFilledPolygon 繪製星形
-    gdImageFilledPolygon(img, points, 10, color);
 }
