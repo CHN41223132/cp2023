@@ -142,9 +142,64 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w13 << <a href='w13.html'>Previous</a> <a href='w15.html'>Next</a> >> w15<br /><h1>心得</h1>
-<p><span>這堂課我剛開始看到的時候我就不是很明白這堂課要學甚麼，第一堂課開始我努力地去消化老師所教的課程內容，但到後面我開始分心，進而導致跟不上老師所教學的內容，但我後來清醒了，利用假日去找汶哲，一步步向他學習上課教的內容，雖然說我沒有學到很徹底，但我目前學會了如何利用Replit和Github建立網站，在Replit上畫國旗，不會時利用GPT來解答。總而言之這堂課我學到了很多未知的知識。</span></p>
-<br />w13 << <a href='w13.html'>Previous</a> <a href='w15.html'>Next</a> >> w15</div>
+    <div id="tipue_search_content">德國 << <a href='德國.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>法國</h1>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+
+void draw_france_flag(gdImagePtr img);
+
+int main() {
+    // 法國國旗的寬度和高度
+    int width = 900;
+    int height = 600;
+
+    // 創建 GD 圖片物件
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+
+    // 呼叫繪圖函數
+    draw_france_flag(img);
+
+    // 開啟輸出檔案
+    FILE *outputFile = fopen("france_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }
+
+    // 將圖片寫入檔案
+    gdImagePng(img, outputFile);
+    fclose(outputFile);
+    gdImageDestroy(img);
+
+    return 0;
+}
+
+void draw_france_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+
+    int blue = gdImageColorAllocate(img, 0, 85, 164);
+    int white = gdImageColorAllocate(img, 255, 255, 255);
+    int red = gdImageColorAllocate(img, 239, 65, 53);
+
+    // 分配法國國旗三個顏色
+    int colors[3] = {blue, white, red};
+    int stripeWidth = width / 3;
+
+    // 畫出三個橫條
+    for (int i = 0; i &lt; 3; i++) {
+        int x1 = i * stripeWidth;
+        int x2 = (i + 1) * stripeWidth;
+
+        gdImageFilledRectangle(img, x1, 0, x2, height, colors[i]);
+    }
+}
+</pre>
+<p></p>
+<p><br/><br/></p>
+<p></p>
+<br />德國 << <a href='德國.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
