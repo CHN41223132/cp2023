@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <gd.h>
 
-void draw_france_flag(gdImagePtr img);
+void draw_Ukraine_flag(gdImagePtr img);
 
 int main() {
     // 烏克蘭國旗的寬度和高度
@@ -13,10 +13,10 @@ int main() {
     gdImageAlphaBlending(img, 0);
 
     // 呼叫繪圖函數
-    draw_france_flag(img);
+    draw_Ukraine_flag(img);
 
     // 開啟輸出檔案
-    FILE *outputFile = fopen("france_flag.png", "wb");
+    FILE *outputFile = fopen("Ukraine   _flag.png", "wb");
     if (outputFile == NULL) {
         fprintf(stderr, "Error opening the output file.\n");
         return 1;
@@ -30,17 +30,17 @@ int main() {
     return 0;
 }
 
-void draw_france_flag(gdImagePtr img) {
+void draw_Ukraine_flag(gdImagePtr img) {
     int width = gdImageSX(img);
     int height = gdImageSY(img);
 
     int blue = gdImageColorAllocate(img, 0, 85, 164);
-    int white = gdImageColorAllocate(img, 255, 255, 255);
-    int red = gdImageColorAllocate(img, 239, 65, 53);
+    int yellow = gdImageColorAllocate(img, 255, 255, 0);
+  // 將整個畫布填充為藍色
+  gdImageFilledRectangle(img, 0, 0, width, height, blue);
 
-    // 畫出三個垂直條紋
-    int stripeWidth = width / 3;
-    gdImageFilledRectangle(img, 0, 0, stripeWidth - 1, height - 1, blue);
-    gdImageFilledRectangle(img, stripeWidth, 0, 2 * stripeWidth - 1, height - 1, white);
-    gdImageFilledRectangle(img, 2 * stripeWidth, 0, width - 1, height - 1, red);
+    // 畫出兩個橫向條紋
+  int stripeWidth = width / 2;
+  // 上方橫條 - 黃色
+  gdImageFilledRectangle(img, 0, 0, width, height / 2, yellow);
 }
