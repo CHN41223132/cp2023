@@ -15,7 +15,7 @@
 <p><a href="https://nfuedu-my.sharepoint.com/:v:/g/personal/yen_nfu_edu_tw/EYSoaecwXNlEg6KPxXltyK4BfgCwjLoxbtgvOGUlgjOx2w?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&amp;e=GIvuYT">如何建立各組協同網站說明影片</a></p>
 <p><a href="https://nfuedu-my.sharepoint.com/:v:/g/personal/yen_nfu_edu_tw/EX1-yNrRODZFgaer3c34nXEBSdqo5HNepKT1HmDKLpwsFQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&amp;e=rYtLhr">如何將協同網站設定協同者後, import 進入 Replit 說明影片</a></p>
 <p><a href="https://nfuedu-my.sharepoint.com/:v:/g/personal/yen_nfu_edu_tw/EXNCbyBWtGRCuO_4RBxsB80B4nROo5aZ6O0DFhRw9bDNFw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&amp;e=981Q1G">說明如何進行基本的 gd 繪圖</a></p>
-<h1><span>w8</span></h1>
+<h1>w8</h1>
 <p><span>學習遠端與倉儲帳號連接</span></p>
 <p></p>
 <h1>w11</h1>
@@ -462,55 +462,62 @@ int main() {
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
- 
+
 #define WIDTH 600
 #define HEIGHT 400
 #define RED 0xDC143C  // Crimson color
 #define YELLOW 0xFFFF00
- 
+
+// 函数：绘制五角星
 void drawStar(gdImagePtr im, int x, int y, int outerRadius, int innerRadius, int color) {
-    double angle = -M_PI / 2.0;  // Starting angle for the star
- 
+    double angle = -M_PI / 2.0;  // 五角星的起始角度
+
     gdPoint starPoints[10];
- 
+
+    // 计算五角星的十个顶点坐标
     for (int i = 0; i &lt; 10; i++) {
         int radius = i % 2 == 0 ? outerRadius : innerRadius;
         starPoints[i].x = x + radius * cos(angle);
         starPoints[i].y = y + radius * sin(angle);
-        angle += M_PI / 5.0;  // Angle between two consecutive points
+        angle += M_PI / 5.0;  // 两个相邻顶点之间的夹角
     }
- 
+
+    // 用指定颜色填充五角星
     gdImageFilledPolygon(im, starPoints, 10, color);
 }
- 
+
+// 函数：绘制越南国旗
 void drawVietnamFlag() {
     gdImagePtr im;
     FILE *output;
- 
+
     im = gdImageCreateTrueColor(WIDTH, HEIGHT);
     output = fopen("./../images/vietnam_flag.png", "wb");
- 
-    // Draw red background
+
+    // 绘制红色背景
     gdImageFilledRectangle(im, 0, 0, WIDTH - 1, HEIGHT - 1, RED);
- 
-    // Draw yellow star in the center
+
+    // 在中心位置绘制黄色五角星
     int starSize = 60;
     int starX = WIDTH / 2;
     int starY = HEIGHT / 2;
- 
+
     drawStar(im, starX, starY, starSize, starSize / 2, YELLOW);
- 
+
+    // 将图像保存为PNG文件
     gdImagePng(im, output);
     fclose(output);
     gdImageDestroy(im);
 }
- 
+
+// 主函数
 int main() {
+    // 调用绘制越南国旗的函数
     drawVietnamFlag();
     return 0;
-}</pre>
-<p><img alt="" height="359" src="/images/vietnam_flag.png" width="539"/></p>
-<h2>德國</h2>
+}
+</pre>
+<p><img alt="" height="359" src="/images/vietnam_flag.png" width="539"/></p><h2>德國</h2>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 
