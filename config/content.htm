@@ -47,54 +47,19 @@
 <p>老師叫我們畫出他指定的圖形並錄影，但我沒有完全了解程式，所以我不會畫。</p>
 <h1>homework</h1>
 <h2>烏克蘭(自己利用之前程式和GTP寫出來的)</h2>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-#include &lt;gd.h&gt;
-
-void draw_Ukraine_flag(gdImagePtr img);
-
-int main() {
-    // 烏克蘭國旗的寬度和高度
-    int width = 510;
-    int height = (int)(width * 2.0 / 3.0);
-
-    // 創建 GD 圖片物件
-    gdImagePtr img = gdImageCreateTrueColor(width, height);
-    gdImageAlphaBlending(img, 0);
-
-    // 呼叫繪圖函數
-    draw_Ukraine_flag(img);
-
-    // 開啟輸出檔案
-    FILE *outputFile = fopen("Ukraine   _flag.png", "wb");
-    if (outputFile == NULL) {
-        fprintf(stderr, "Error opening the output file.\n");
-        return 1;
-    }
-
-    // 將圖片寫入檔案
-    gdImagePng(img, outputFile);
-    fclose(outputFile);
-    gdImageDestroy(img);
-
-    return 0;
-}
-
-void draw_Ukraine_flag(gdImagePtr img) {
-    int width = gdImageSX(img);// 取得圖像的寬度
-    int height = gdImageSY(img);// 取得圖像的高度
-
-    int blue = gdImageColorAllocate(img, 0, 85, 164);
-    int yellow = gdImageColorAllocate(img, 255, 255, 0);
-  // 將整個畫布填充為藍色
-  gdImageFilledRectangle(img, 0, 0, width, height, blue);
-
-    // 畫出兩個橫向條紋
-  int stripeWidth = width / 2;
-  // 上方橫條 - 黃色
-  gdImageFilledRectangle(img, 0, 0, width, height / 2, yellow);
-}
-</pre>
+<p>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;</p>
+<p>void draw_Ukraine_flag(gdImagePtr img);</p>
+<p>int main() {<br/> // 烏克蘭國旗的寬度和高度<br/> int width = 510;<br/> int height = (int)(width * 2.0 / 3.0);</p>
+<p>// 創建 GD 圖片物件<br/> gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);</p>
+<p>// 呼叫繪圖函數<br/> draw_Ukraine_flag(img);</p>
+<p>// 開啟輸出檔案<br/> FILE *outputFile = fopen("Ukraine _flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "Error opening the output file.\n");<br/> return 1;<br/> }</p>
+<p>// 將圖片寫入檔案<br/> gdImagePng(img, outputFile);<br/> fclose(outputFile);<br/> gdImageDestroy(img);</p>
+<p>return 0;<br/>}</p>
+<p>void draw_Ukraine_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);// 取得圖像的寬度<br/> int height = gdImageSY(img);// 取得圖像的高度</p>
+<p>int blue = gdImageColorAllocate(img, 0, 85, 164);<br/> int yellow = gdImageColorAllocate(img, 255, 255, 0);<br/> // 將整個畫布填充為藍色<br/> gdImageFilledRectangle(img, 0, 0, width, height, yellow);</p>
+<p>// 畫出兩個橫向條紋<br/> int stripeWidth = width / 2;<br/> // 上方橫條 - 黃色<br/> gdImageFilledRectangle(img, 0, 0, width, height / 2, blue);<br/>}</p>
 <p><img alt="" height="340" src="/images/Ukraine   _flag.png" width="510"/></p>
+<p></p>
 <h2>台灣</h2>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
 // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621

@@ -37,10 +37,10 @@ void draw_Ukraine_flag(gdImagePtr img) {
     int blue = gdImageColorAllocate(img, 0, 85, 164);
     int yellow = gdImageColorAllocate(img, 255, 255, 0);
   // 將整個畫布填充為藍色
-  gdImageFilledRectangle(img, 0, 0, width, height, blue);
+  gdImageFilledRectangle(img, 0, 0, width, height, yellow);
 
     // 畫出兩個橫向條紋
   int stripeWidth = width / 2;
   // 上方橫條 - 黃色
-  gdImageFilledRectangle(img, 0, 0, width, height / 2, yellow);
+  gdImageFilledRectangle(img, 0, 0, width, height / 2, blue);
 }
