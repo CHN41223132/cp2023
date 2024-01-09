@@ -31,8 +31,8 @@ int main() {
 }
 
 void draw_Ukraine_flag(gdImagePtr img) {
-    int width = gdImageSX(img);
-    int height = gdImageSY(img);
+    int width = gdImageSX(img);// 取得圖像的寬度
+    int height = gdImageSY(img);// 取得圖像的高度
 
     int blue = gdImageColorAllocate(img, 0, 85, 164);
     int yellow = gdImageColorAllocate(img, 255, 255, 0);
